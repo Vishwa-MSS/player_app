@@ -3,7 +3,7 @@ import PlayerForm from './components/PlayerForm';
 import PlayerList from './components/PlayerList';
 import AuthPage from './components/AuthPage';
 
-const API_URL = 'http://127.0.0.1:8000/api/players/';
+const API_URL = 'https://player-app-ozqz.vercel.app/api/players/';
 
 function App() {
   const [players, setPlayers] = useState([]);
@@ -106,7 +106,7 @@ function App() {
 
   const handleLogout = async () => {
     try {
-      await fetch('http://127.0.0.1:8000/api/auth/logout/', {
+      await fetch('https://player-app-ozqz.vercel.app/api/auth/logout/', {
         method: 'POST',
         headers: { 'Authorization': `Token ${token}` }
       });
@@ -129,7 +129,7 @@ function App() {
       {/* Decorative background elements */}
       <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-brand-accent/20 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-brand-accent/10 rounded-full blur-[100px] pointer-events-none" />
-      
+
       <div className="w-full max-w-5xl relative z-10 flex-grow flex flex-col">
         {/* Header */}
         <div className="text-center mb-8">
@@ -142,8 +142,8 @@ function App() {
           <p className="text-brand-muted text-lg">
             Welcome, {user?.username}
           </p>
-          <button 
-            onClick={handleLogout} 
+          <button
+            onClick={handleLogout}
             className="mt-4 px-4 py-1 text-sm bg-brand-accent/20 text-brand-accent border border-brand-accent/50 rounded hover:bg-brand-accent hover:text-white transition-colors"
           >
             Sign Out
@@ -165,33 +165,31 @@ function App() {
               setActiveTab('list');
               setEditingPlayer(null);
             }}
-            className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${
-              activeTab === 'list' 
-                ? 'bg-brand-accent/20 text-white border border-brand-accent shadow-[0_0_15px_rgba(230,57,70,0.2)]' 
-                : 'text-brand-muted hover:text-white hover:bg-white/5'
-            }`}
+            className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${activeTab === 'list'
+              ? 'bg-brand-accent/20 text-white border border-brand-accent shadow-[0_0_15px_rgba(230,57,70,0.2)]'
+              : 'text-brand-muted hover:text-white hover:bg-white/5'
+              }`}
           >
             Player Dashboard
           </button>
           <button
             onClick={() => setActiveTab('form')}
-            className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${
-              activeTab === 'form' 
-                ? 'bg-brand-accent/20 text-white border border-brand-accent shadow-[0_0_15px_rgba(230,57,70,0.2)]' 
-                : 'text-brand-muted hover:text-white hover:bg-white/5'
-            }`}
+            className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${activeTab === 'form'
+              ? 'bg-brand-accent/20 text-white border border-brand-accent shadow-[0_0_15px_rgba(230,57,70,0.2)]'
+              : 'text-brand-muted hover:text-white hover:bg-white/5'
+              }`}
           >
             {editingPlayer ? 'Edit Player' : 'Add New Player'}
           </button>
         </div>
-        
+
         {/* Main Content Area */}
         <div className="w-full pb-12">
           {activeTab === 'form' ? (
             <div className="max-w-4xl mx-auto">
-              <PlayerForm 
-                initialData={editingPlayer} 
-                onSubmit={handleSavePlayer} 
+              <PlayerForm
+                initialData={editingPlayer}
+                onSubmit={handleSavePlayer}
                 onCancel={cancelEdit}
               />
             </div>
@@ -203,10 +201,10 @@ function App() {
                   <p>Connecting to database...</p>
                 </div>
               ) : (
-                <PlayerList 
-                  players={players} 
-                  onEdit={handleEditPlayer} 
-                  onDelete={handleDeletePlayer} 
+                <PlayerList
+                  players={players}
+                  onEdit={handleEditPlayer}
+                  onDelete={handleDeletePlayer}
                 />
               )}
             </>
