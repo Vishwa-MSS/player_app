@@ -13,12 +13,12 @@ function AuthPage({ onLoginSuccess }) {
     setLoading(true);
     setError(null);
 
-    const url = isLogin 
-      ? 'http://127.0.0.1:8000/api/auth/login/' 
-      : 'http://127.0.0.1:8000/api/auth/register/';
+    const url = isLogin
+      ? 'https://player-app-ozqz.vercel.app/api/auth/login/'
+      : 'https://player-app-ozqz.vercel.app/api/auth/register/';
 
-    const payload = isLogin 
-      ? { username, password } 
+    const payload = isLogin
+      ? { username, password }
       : { username, email, password };
 
     try {
@@ -40,7 +40,7 @@ function AuthPage({ onLoginSuccess }) {
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
       onLoginSuccess(data.token, data.user);
-      
+
     } catch (err) {
       setError(err.message);
     } finally {
@@ -53,7 +53,7 @@ function AuthPage({ onLoginSuccess }) {
       {/* Decorative background elements */}
       <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-brand-accent/20 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-brand-accent/10 rounded-full blur-[100px] pointer-events-none" />
-      
+
       <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-300">
@@ -68,12 +68,12 @@ function AuthPage({ onLoginSuccess }) {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md relative z-10">
         <div className="bg-white/5 backdrop-blur-xl py-8 px-4 shadow-[0_0_40px_rgba(230,57,70,0.1)] sm:rounded-2xl sm:px-10 border border-white/10">
-          
+
           {error && (
-             <div className="mb-4 bg-red-900/50 border border-red-500 text-red-200 px-4 py-3 rounded-lg flex items-center justify-between text-sm">
-               <span>{error}</span>
-               <button onClick={() => setError(null)} className="text-red-400 hover:text-white font-bold">&times;</button>
-             </div>
+            <div className="mb-4 bg-red-900/50 border border-red-500 text-red-200 px-4 py-3 rounded-lg flex items-center justify-between text-sm">
+              <span>{error}</span>
+              <button onClick={() => setError(null)} className="text-red-400 hover:text-white font-bold">&times;</button>
+            </div>
           )}
 
           <form className="space-y-6" onSubmit={handleSubmit}>
