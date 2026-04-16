@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-2!vnbu1ss7$l$q!qh1j&yd_b+wye2^j*8m^zs=wp!z-tn4-^fq
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+CORS_ALLOWED_ORIGINS = [
+    "https://player-app-ozqz.vercel.app/",
+]
 CORS_ALLOW_ALL_ORIGINS = True
 
 
