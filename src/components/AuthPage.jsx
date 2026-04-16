@@ -13,9 +13,11 @@ function AuthPage({ onLoginSuccess }) {
     setLoading(true);
     setError(null);
 
+    const BASE_URL = "https://player-app-4.onrender.com";
+
     const url = isLogin
-      ? 'https://player-app-ozqz.vercel.app/api/auth/login/'
-      : 'https://player-app-ozqz.vercel.app/api/auth/register/';
+      ? `${BASE_URL}/api/auth/login/`
+      : `${BASE_URL}/api/auth/register/`;
 
     const payload = isLogin
       ? { username, password }
