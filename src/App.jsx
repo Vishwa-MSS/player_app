@@ -3,7 +3,7 @@ import PlayerForm from './components/PlayerForm';
 import PlayerList from './components/PlayerList';
 import AuthPage from './components/AuthPage';
 
-const API_URL = 'https://player-app-ozqz.vercel.app/api/players/';
+const API_URL = 'https://player-app-4.onrender.com/api/players/';
 
 function App() {
   const [players, setPlayers] = useState([]);
@@ -106,7 +106,7 @@ function App() {
 
   const handleLogout = async () => {
     try {
-      await fetch('https://player-app-ozqz.vercel.app/api/auth/logout/', {
+      await fetch('https://player-app-4.onrender.com/api/auth/logout/', {
         method: 'POST',
         headers: { 'Authorization': `Token ${token}` }
       });
